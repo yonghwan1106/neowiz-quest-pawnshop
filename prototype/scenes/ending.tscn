@@ -1,0 +1,180 @@
+[gd_scene load_steps=2 format=3 uid="uid://f6yk1v8k2q1y7"]
+
+[ext_resource type="Script" path="res://scripts/ending.gd" id="1_ending"]
+
+[node name="Ending" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ending")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0196078, 0.0196078, 0.0392157, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -300.0
+offset_right = 500.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="EndingTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.658824, 0.333333, 0.968627, 1)
+theme_override_font_sizes/font_size = 64
+text = "하루가 저물었습니다"
+horizontal_alignment = 1
+
+[node name="EndingSubtitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.7, 1)
+theme_override_font_sizes/font_size = 28
+text = "당신의 선택이 세상을 바꿨습니다"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="SummaryPanel" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(800, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SummaryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="VBox" type="VBoxContainer" parent="VBoxContainer/SummaryPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="SummaryTitle" type="Label" parent="VBoxContainer/SummaryPanel/MarginContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.9, 1)
+theme_override_font_sizes/font_size = 24
+text = "오늘의 기록"
+horizontal_alignment = 1
+
+[node name="CustomerSummary" type="RichTextLabel" parent="VBoxContainer/SummaryPanel/MarginContainer/VBox"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.7, 0.7, 0.8, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "손님 요약이 여기에 표시됩니다."
+
+[node name="ReputationSummary" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 60
+
+[node name="MercyBox" type="VBoxContainer" parent="VBoxContainer/ReputationSummary"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/ReputationSummary/MercyBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.8, 0.9, 1)
+theme_override_font_sizes/font_size = 20
+text = "자비"
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="VBoxContainer/ReputationSummary/MercyBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "50"
+horizontal_alignment = 1
+
+[node name="JusticeBox" type="VBoxContainer" parent="VBoxContainer/ReputationSummary"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/ReputationSummary/JusticeBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.7, 0.4, 1)
+theme_override_font_sizes/font_size = 20
+text = "정의"
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="VBoxContainer/ReputationSummary/JusticeBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "50"
+horizontal_alignment = 1
+
+[node name="ProfitBox" type="VBoxContainer" parent="VBoxContainer/ReputationSummary"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/ReputationSummary/ProfitBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 20
+text = "이익"
+horizontal_alignment = 1
+
+[node name="Value" type="Label" parent="VBoxContainer/ReputationSummary/ProfitBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "50"
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 40
+
+[node name="RestartButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "처음부터"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "종료"
+
+[node name="PrototypeNote" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -60.0
+offset_right = 300.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.4, 0.4, 0.5, 1)
+theme_override_font_sizes/font_size = 16
+text = "Prototype v0.1 - Creative Nexus | Neowiz Quest 2026"
+horizontal_alignment = 1

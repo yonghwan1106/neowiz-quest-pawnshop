@@ -1,0 +1,166 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4yk9v6k0q9y5"]
+
+[ext_resource type="Script" path="res://scripts/dialogue.gd" id="1_dialogue"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dialogue")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.0588235, 0.0862745, 1)
+
+[node name="CharacterArea" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CustomerPortrait" type="ColorRect" parent="CharacterArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5, 0.4, 0.5, 1)
+
+[node name="NameLabel" type="Label" parent="CharacterArea/CustomerPortrait"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "손님"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProtagonistPortrait" type="ColorRect" parent="CharacterArea"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.4
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3, 0.35, 0.45, 1)
+
+[node name="NameLabel" type="Label" parent="CharacterArea/ProtagonistPortrait"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.85
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "진우"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DialogueBox" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.65
+anchor_right = 1.0
+anchor_bottom = 0.95
+offset_left = 40.0
+offset_right = -40.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="DialogueBox/MarginContainer"]
+layout_mode = 2
+
+[node name="SpeakerLabel" type="Label" parent="DialogueBox/MarginContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.658824, 0.333333, 0.968627, 1)
+theme_override_font_sizes/font_size = 24
+text = "화자"
+
+[node name="DialogueLabel" type="RichTextLabel" parent="DialogueBox/MarginContainer/VBox"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "대화 내용이 여기에 표시됩니다."
+
+[node name="ContinueHint" type="Label" parent="DialogueBox/MarginContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.6, 1)
+theme_override_font_sizes/font_size = 18
+text = "클릭하여 계속..."
+horizontal_alignment = 2
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -120.0
+offset_right = 300.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="ChoiceTitle" type="Label" parent="ChoiceContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.658824, 0.333333, 0.968627, 1)
+theme_override_font_sizes/font_size = 28
+text = "어떻게 하시겠습니까?"
+horizontal_alignment = 1
+
+[node name="Choice1" type="Button" parent="ChoiceContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "선택지 1"
+
+[node name="Choice2" type="Button" parent="ChoiceContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "선택지 2"
+
+[node name="Choice3" type="Button" parent="ChoiceContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "선택지 3"

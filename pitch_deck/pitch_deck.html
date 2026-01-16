@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기억의 전당포 - 피치 덱</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+        }
+
+        .slide {
+            width: 1920px;
+            height: 1080px;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            page-break-after: always;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(120, 80, 200, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(80, 200, 200, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Slide 1: Title */
+        .title-slide .slide-content {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .game-title {
+            font-size: 120px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #22d3d1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            font-size: 36px;
+            color: #94a3b8;
+            font-weight: 300;
+            margin-bottom: 60px;
+        }
+
+        .logline {
+            font-size: 32px;
+            color: #cbd5e1;
+            max-width: 1400px;
+            line-height: 1.6;
+            font-style: italic;
+            border-left: 4px solid #a855f7;
+            padding-left: 30px;
+            text-align: left;
+        }
+
+        .team-badge {
+            position: absolute;
+            bottom: 80px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .team-badge span {
+            font-size: 24px;
+            color: #64748b;
+        }
+
+        /* Slide 2: Team */
+        .section-title {
+            font-size: 64px;
+            font-weight: 700;
+            color: #a855f7;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            width: 350px;
+            text-align: center;
+        }
+
+        .team-member .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .team-member .name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .team-member .role {
+            font-size: 20px;
+            color: #a855f7;
+            margin-bottom: 15px;
+        }
+
+        .team-member .desc {
+            font-size: 16px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Slide 3: Concept */
+        .concept-container {
+            display: flex;
+            gap: 80px;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .concept-visual {
+            width: 700px;
+            height: 700px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(99, 102, 241, 0.2));
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 200px;
+            border: 2px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .concept-text {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .concept-headline {
+            font-size: 48px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .concept-desc {
+            font-size: 26px;
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            font-size: 24px;
+            color: #94a3b8;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-list li::before {
+            content: '◆';
+            color: #a855f7;
+        }
+
+        /* Slide 4-5: World */
+        .world-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            flex: 1;
+            align-items: center;
+        }
+
+        .world-image {
+            height: 600px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 150px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .world-text h3 {
+            font-size: 36px;
+            color: #a855f7;
+            margin-bottom: 20px;
+        }
+
+        .world-text p {
+            font-size: 22px;
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .highlight-box {
+            background: rgba(168, 85, 247, 0.1);
+            border-left: 4px solid #a855f7;
+            padding: 25px 30px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        /* Slide 6-7: Mechanics */
+        .mechanics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            flex: 1;
+            align-content: center;
+        }
+
+        .mechanic-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .mechanic-card .icon {
+            font-size: 80px;
+            margin-bottom: 25px;
+        }
+
+        .mechanic-card h3 {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .mechanic-card p {
+            font-size: 18px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Slide 8-9: Characters */
+        .character-container {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            flex: 1;
+            align-items: center;
+        }
+
+        .character-card {
+            width: 400px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .character-portrait {
+            height: 350px;
+            background: linear-gradient(135deg, #2a2a4a, #1a1a2e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+        }
+
+        .character-info {
+            padding: 30px;
+        }
+
+        .character-info h3 {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .character-info .role {
+            font-size: 18px;
+            color: #a855f7;
+            margin-bottom: 15px;
+        }
+
+        .character-info p {
+            font-size: 16px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* Slide 10: Art Style */
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            flex: 1;
+            align-content: center;
+        }
+
+        .art-sample {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #2a2a4a, #1a1a2e);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .art-keywords {
+            grid-column: span 4;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .keyword {
+            background: rgba(168, 85, 247, 0.2);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 22px;
+            color: #a855f7;
+        }
+
+        /* Slide 11: Comparison */
+        .comparison-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .comparison-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .game-compare {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px 40px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex: 1;
+        }
+
+        .game-compare .icon {
+            font-size: 50px;
+        }
+
+        .game-compare .info h4 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .game-compare .info p {
+            font-size: 16px;
+            color: #94a3b8;
+        }
+
+        .plus {
+            font-size: 48px;
+            color: #a855f7;
+        }
+
+        .equals {
+            font-size: 48px;
+            color: #22d3d1;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(34, 211, 209, 0.2));
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .result-box h3 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .result-box p {
+            font-size: 20px;
+            color: #cbd5e1;
+        }
+
+        /* Slide 12: Roadmap */
+        .roadmap-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .roadmap-item {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .phase {
+            width: 180px;
+            text-align: right;
+        }
+
+        .phase .label {
+            font-size: 18px;
+            color: #a855f7;
+        }
+
+        .phase .date {
+            font-size: 24px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .timeline-dot {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #a855f7;
+            position: relative;
+        }
+
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 80px;
+            background: rgba(168, 85, 247, 0.3);
+        }
+
+        .roadmap-item:last-child .timeline-dot::before {
+            display: none;
+        }
+
+        .milestone {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 25px 35px;
+            border-radius: 15px;
+            border-left: 4px solid #a855f7;
+        }
+
+        .milestone h4 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .milestone p {
+            font-size: 18px;
+            color: #94a3b8;
+        }
+
+        /* Slide 13: AI */
+        .ai-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            flex: 1;
+            justify-content: center;
+            max-width: 1400px;
+        }
+
+        .ai-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 35px 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .ai-item .number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .ai-item .content h4 {
+            font-size: 26px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .ai-item .content p {
+            font-size: 20px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .ai-note {
+            text-align: center;
+            font-size: 22px;
+            color: #22d3d1;
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        .slide-footer {
+            position: absolute;
+            bottom: 40px;
+            right: 80px;
+            font-size: 18px;
+            color: #64748b;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 40px;
+            left: 80px;
+            font-size: 18px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide title-slide">
+        <div class="slide-content">
+            <h1 class="game-title">기억의 전당포</h1>
+            <p class="subtitle">The Pawnshop of Memories</p>
+            <p class="logline">
+                "당신의 가장 소중한 기억, 얼마에 파시겠습니까?"<br>
+                근미래 디스토피아에서 사람들의 기억을 사고파는 전당포를 운영하며,<br>
+                각 손님의 숨겨진 이야기와 도덕적 딜레마에 직면하는 내러티브 경영 시뮬레이션
+            </p>
+            <div class="team-badge">
+                <span>Creative Nexus | 크리에이티브 넥서스</span>
+            </div>
+        </div>
+        <div class="slide-number">01</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+
+    <!-- Slide 2: Team -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="section-title">팀 소개</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="avatar">👤</div>
+                    <div class="name">박용환</div>
+                    <div class="role">팀장 / 게임 디자이너</div>
+                    <div class="desc">게임 기획 및 내러티브 설계 총괄<br>10년 게임 개발 경력</div>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">🎨</div>
+                    <div class="name">AI + 아트 디렉터</div>
+                    <div class="role">아트 / 비주얼</div>
+                    <div class="desc">AI 생성 아트 큐레이션 및 후보정<br>비주얼 아이덴티티 통일</div>
+                </div>
+                <div class="team-member">
+                    <div class="avatar">💻</div>
+                    <div class="name">Claude Code</div>
+                    <div class="role">개발 어시스턴트</div>
+                    <div class="desc">Godot 프로토타입 개발 가속화<br>시스템 설계 및 구현 지원</div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">02</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+
+    <!-- Slide 3: Concept -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="section-title">게임 콘셉트</h2>
+            <div class="concept-container">
+                <div class="concept-visual">🔮</div>
+                <div class="concept-text">
+                    <h3 class="concept-headline">기억을 거래하는<br>미스터리한 전당포 운영</h3>
+                    <p class="concept-desc">
+                        플레이어는 근미래 세계에서 '기억 전당포'를 운영합니다.
+                        손님들은 각자의 사연을 안고 소중한 기억을 팔러 오고,
+                        당신은 그 기억의 가치를 감정하고 거래 여부를 결정합니다.
+                    </p>
+                    <ul class="feature-list">
+                        <li>각 기억 속 숨겨진 진실을 파헤치는 감정 시스템</li>
+                        <li>거래 결정이 손님의 운명을 바꾸는 분기 스토리</li>
+                        <li>도덕적 딜레마와 감정적 선택의 연속</li>
+                        <li>전당포 경영과 내러티브의 유기적 결합</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">03</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+
+    <!-- Slide 4: World 1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="section-title">세계관 설정</h2>
+            <div class="world-container">
+                <div class="world-image">🌆</div>
+                <div class="world-text">
+                    <h3>2087년, 서울</h3>
+                    <p>
+                        기억 추출 기술의 상용화로 사람들의 기억은 하나의 '자산'이 되었습니다.
+                        정부는 범죄 기억의 거래를 금지했지만, 뒷골목에서는 여전히
+                        모든 종류의 기억이 거래됩니다.
+                    </p>
+                    <p>
+                        기억은 '메모리 오브(Memory Orb)'라 불리는 결정체에 저장되며,
+                        각 기억은 고유한 색상과 파동을 가집니다. 행복한 기억은 따뜻한 황금빛,
+                        슬픈 기억은 푸른빛, 분노의 기억은 붉은빛을 띕니다.
+                    </p>
+                    <div class="highlight-box">
+                        <p>💡 핵심 설정: 기억을 잃으면 그 경험으로 형성된 성격의 일부도 사라진다</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">04</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+
+    <!-- Slide 5: World 2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="section-title">기억의 전당포</h2>
+            <div class="world-container">
+                <div class="world-text">
+                    <h3>당신의 가게, 당신의 규칙</h3>
+                    <p>
+                        도심 외곽의 좁은 골목, 네온사인 하나 없는 낡은 건물 2층.
+                        '기억의 전당포'는 아는 사람만 찾아오는 비밀 거래소입니다.
+                    </p>
+                    <p>
+                        플레이어 '진우'는 5년 전 이곳을 물려받았지만,
+                        정작 본인의 기억 일부가 사라져 있습니다.
+                        손님들의 기억을 감정하면서, 서서히 자신의 잃어버린 과거도
+                        조각조각 맞춰가게 됩니다.
+                    </p>
+                    <div class="highlight-box">
+                        <p>🎯 플레이어 동기: 손님들을 도우면서 자신의 기억을 되찾는다</p>
+                    </div>
+                </div>
+                <div class="world-image">🏪</div>
+            </div>
+        </div>
+        <div class="slide-number">05</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+
+    <!-- Slide 6: Mechanics 1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="section-title">핵심 메커니즘</h2>
+            <div class="mechanics-grid">
+                <div class="mechanic-card">
+                    <div class="icon">🔍</div>
+                    <h3>기억 감정</h3>
+                    <p>기억 구슬 속 파편을 맞추는 퍼즐 미니게임으로 기억의 진실을 파악합니다. 감정 정확도에 따라 추가 정보가 해금됩니다.</p>
+                </div>
+                <div class="mechanic-card">
+                    <div class="icon">💬</div>
+                    <h3>심층 대화</h3>
+                    <p>손님과의 대화를 통해 기억의 맥락을 파악합니다. 올바른 질문으로 숨겨진 진실을 끌어냅니다.</p>
+                </div>
+                <div class="mechanic-card">
+                    <div class="icon">⚖️</div>
+                    <h3>거래 결정</h3>
+                    <p>기억을 매입할지, 거절할지, 조건부로 수정할지 선택합니다. 각 결정은 손님의 미래를 바꿉니다.</p>
+                </div>
+                <div class="mechanic-card">
+                    <div class="icon">📊</div>
+                    <h3>평판 관리</h3>
+                    <p>선택에 따라 '자비', '정의', '이익' 세 가지 평판이 변화합니다. 평판은 새로운 손님과 엔딩에 영향을 줍니다.</p>
+                </div>
+                <div class="mechanic-card">
+                    <div class="icon">🧩</div>
+                    <h3>기억 조합</h3>
+                    <p>수집한 기억 파편들을 조합해 더 큰 진실을 발견합니다. 주인공의 과거도 이 방식으로 밝혀집니다.</p>
+                </div>
+                <div class="mechanic-card">
+                    <div class="icon">🌙</div>
+                    <h3>시간 경과</h3>
+                    <p>하루에 처리할 수 있는 손님 수가 제한됩니다. 누구를 우선할지 선택이 필요합니다.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">06</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+
+    <!-- Slide 7: Memory Puzzle -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="section-title">기억 감정 시스템</h2>
+            <div class="concept-container">
+                <div class="concept-visual" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent);">
+                    🧠
+                </div>
+                <div class="concept-text">
+                    <h3 class="concept-headline">파편을 맞춰<br>기억을 복원하라</h3>
+                    <p class="concept-desc">
+                        기억 구슬 안에는 무수한 파편이 흩어져 있습니다.
+                        플레이어는 직관과 단서를 활용해 파편을 올바른 위치에 배치합니다.
+                    </p>
+                    <ul class="feature-list">
+                        <li>감정(Emotion)에 따라 파편 색상과 형태가 변화</li>
+                        <li>정확도가 높을수록 기억의 디테일이 선명해짐</li>
+                        <li>숨겨진 파편 발견 시 보너스 스토리 해금</li>
+                        <li>시간 제한 없이 플레이어 페이스로 진행</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">07</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+
+    <!-- Slide 8: Characters 1 -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="section-title">주요 캐릭터</h2>
+            <div class="character-container">
+                <div class="character-card">
+                    <div class="character-portrait">👨</div>
+                    <div class="character-info">
+                        <h3>강진우 (35)</h3>
+                        <div class="role">주인공 / 전당포 주인</div>
+                        <p>5년 전 사고로 기억 일부를 잃은 전당포 주인. 무표정하고 과묵하지만, 손님들의 기억 속에서 따뜻함을 느낀다. 왜 자신이 이 일을 시작했는지 기억나지 않는다.</p>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="character-portrait">👧</div>
+                    <div class="character-info">
+                        <h3>민지 (17)</h3>
+                        <div class="role">첫 번째 손님</div>
+                        <p>사이버네틱 팔을 갖고 싶어하는 소녀. 수술비를 마련하기 위해 어린 시절 행복한 기억을 팔러 왔다. 그 기억 속에는 돌아가신 할머니와의 추억이 담겨 있다.</p>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <div class="character-portrait">👴</div>
+                    <div class="character-info">
+                        <h3>박 노인 (72)</h3>
+                        <div class="role">두 번째 손님</div>
+                        <p>치매에 걸린 아내를 위해 자신의 첫사랑 기억을 팔려는 노인. 아내가 기억을 잃어가는 것을 막기 위해, 그 기억을 아내에게 이식하고 싶어한다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">08</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+
+    <!-- Slide 9: Characters 2 -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="section-title">갈등과 선택</h2>
+            <div class="character-container">
+                <div class="character-card" style="width: 550px;">
+                    <div class="character-portrait">🎭</div>
+                    <div class="character-info">
+                        <h3>정석현 (28)</h3>
+                        <div class="role">세 번째 손님 / 도덕적 딜레마</div>
+                        <p>3년 전 저지른 범죄 기억을 팔려는 남자. 그 기억을 팔면 그는 죄책감에서 벗어나지만, 피해자는 영영 진실을 알 수 없게 된다. 당신은 이 거래를 받아들일 것인가?</p>
+                    </div>
+                </div>
+                <div class="concept-text" style="max-width: 600px;">
+                    <h3 class="concept-headline" style="font-size: 36px;">세 가지 선택</h3>
+                    <ul class="feature-list">
+                        <li><strong style="color: #22d3d1;">매입</strong> - 기억을 사들여 그의 죄책감을 덜어준다</li>
+                        <li><strong style="color: #f43f5e;">거절</strong> - 거래를 거부하고 그를 돌려보낸다</li>
+                        <li><strong style="color: #a855f7;">수정</strong> - 기억을 변형해 피해자에게 단서를 남긴다</li>
+                    </ul>
+                    <div class="highlight-box" style="margin-top: 30px;">
+                        <p>어떤 선택도 완전한 정답이 아닙니다.<br>당신의 가치관이 게임 속 세계를 형성합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">09</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+
+    <!-- Slide 10: Art Style -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="section-title">아트 스타일 & 무드</h2>
+            <div class="art-grid">
+                <div class="art-sample">🌃</div>
+                <div class="art-sample">🔮</div>
+                <div class="art-sample">🏙️</div>
+                <div class="art-sample">💎</div>
+                <div class="art-sample">🌧️</div>
+                <div class="art-sample">✨</div>
+                <div class="art-sample">🎆</div>
+                <div class="art-sample">🌌</div>
+                <div class="art-keywords">
+                    <span class="keyword">네오누아르</span>
+                    <span class="keyword">사이버펑크 라이트</span>
+                    <span class="keyword">무채색 + 보라/청록 포인트</span>
+                    <span class="keyword">빗소리와 네온</span>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">10</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+
+    <!-- Slide 11: Comparison -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="section-title">유사 게임 비교 (USP)</h2>
+            <div class="comparison-container">
+                <div class="comparison-row">
+                    <div class="game-compare">
+                        <div class="icon">📜</div>
+                        <div class="info">
+                            <h4>Papers, Please</h4>
+                            <p>도덕적 선택 + 반복적 업무</p>
+                        </div>
+                    </div>
+                    <span class="plus">+</span>
+                    <div class="game-compare">
+                        <div class="icon">☕</div>
+                        <div class="info">
+                            <h4>Coffee Talk</h4>
+                            <p>따뜻한 대화 + 캐릭터 스토리</p>
+                        </div>
+                    </div>
+                    <span class="plus">+</span>
+                    <div class="game-compare">
+                        <div class="icon">🔍</div>
+                        <div class="info">
+                            <h4>Return of the Obra Dinn</h4>
+                            <p>기억 탐색 + 추리</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;">
+                    <span class="equals">=</span>
+                </div>
+                <div class="result-box">
+                    <h3>기억의 전당포</h3>
+                    <p>도덕적 딜레마 × 감정적 내러티브 × 기억 퍼즐 = 새로운 경험</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">11</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+
+    <!-- Slide 12: Roadmap -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="section-title">개발 로드맵</h2>
+            <div class="roadmap-container">
+                <div class="roadmap-item">
+                    <div class="phase">
+                        <div class="label">PHASE 1</div>
+                        <div class="date">Q1 2026</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="milestone">
+                        <h4>프로토타입 (현재)</h4>
+                        <p>핵심 루프 검증 - 2~3명 손님 시나리오, 기억 감정 미니게임, 선택 분기</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="phase">
+                        <div class="label">PHASE 2</div>
+                        <div class="date">Q2-Q3 2026</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="milestone">
+                        <h4>버티컬 슬라이스</h4>
+                        <p>Chapter 1 완성본 - 10명 손님, 2개 엔딩, 풀 보이스</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="phase">
+                        <div class="label">PHASE 3</div>
+                        <div class="date">Q4 2026</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="milestone">
+                        <h4>알파 빌드</h4>
+                        <p>전체 스토리 구현 - 30명+ 손님, 5개 메인 엔딩, 평판 시스템</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="phase">
+                        <div class="label">PHASE 4</div>
+                        <div class="date">Q1 2027</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="milestone">
+                        <h4>베타 & 폴리싱</h4>
+                        <p>QA, 현지화, Steam 페이지 준비</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="phase">
+                        <div class="label">RELEASE</div>
+                        <div class="date">Q2 2027</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="milestone">
+                        <h4>Steam 정식 출시</h4>
+                        <p>PC 우선 출시, 이후 콘솔 포팅 검토</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-number">12</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+
+    <!-- Slide 13: AI Usage -->
+    <div class="slide">
+        <div class="slide-content">
+            <h2 class="section-title">AI 활용 명세</h2>
+            <div class="ai-container">
+                <div class="ai-item">
+                    <div class="number">1</div>
+                    <div class="content">
+                        <h4>컨셉 아트 및 캐릭터 일러스트</h4>
+                        <p>Midjourney / DALL-E를 활용하여 초안을 생성하고, 아트 디렉터가 후보정 및 스타일 통일 작업 진행</p>
+                    </div>
+                </div>
+                <div class="ai-item">
+                    <div class="number">2</div>
+                    <div class="content">
+                        <h4>기획 문서 초안</h4>
+                        <p>LLM(Claude)을 활용하여 세계관 설정 및 캐릭터 배경 스토리 초안을 작성하고, 기획자가 100% 리라이팅</p>
+                    </div>
+                </div>
+                <div class="ai-item">
+                    <div class="number">3</div>
+                    <div class="content">
+                        <h4>코드 보조</h4>
+                        <p>Claude Code를 활용하여 Godot 프로토타입 개발 가속화 - 시스템 설계 및 구현 지원</p>
+                    </div>
+                </div>
+                <p class="ai-note">
+                    ✨ 모든 AI 생성물은 인간 창작자의 검수와 수정을 거쳤으며,<br>
+                    핵심 내러티브와 게임 디자인은 팀의 고유한 창작물입니다.
+                </p>
+            </div>
+        </div>
+        <div class="slide-number">13</div>
+        <div class="slide-footer">Neowiz Quest 2026</div>
+    </div>
+</body>
+</html>
