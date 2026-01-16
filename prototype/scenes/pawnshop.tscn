@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3yk8v5k9q8y4"]
+[gd_scene load_steps=6 format=3 uid="uid://c3yk8v5k9q8y4"]
 
 [ext_resource type="Script" path="res://scripts/pawnshop.gd" id="1_pawnshop"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/bg_pawnshop.png" id="2_bg"]
+[ext_resource type="Theme" path="res://resources/theme_neowiz.tres" id="3_theme"]
+[ext_resource type="Texture2D" path="res://assets/effects/memory_orb.png" id="4_orb"]
+[ext_resource type="Texture2D" path="res://assets/effects/memory_orb_cyan.png" id="5_orb_cyan"]
 
 [node name="Pawnshop" type="Control"]
 layout_mode = 3
@@ -9,16 +13,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_theme")
 script = ExtResource("1_pawnshop")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0784314, 0.0784314, 0.117647, 1)
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="ShopInterior" type="Control" parent="."]
 layout_mode = 1
@@ -28,115 +35,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Counter" type="ColorRect" parent="ShopInterior"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.6
-anchor_right = 0.9
-anchor_bottom = 0.75
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.180392, 0.137255, 0.101961, 1)
-
-[node name="CounterTop" type="ColorRect" parent="ShopInterior/Counter"]
-layout_mode = 1
-anchors_preset = 10
-anchor_left = 0.0
-anchor_right = 1.0
-offset_bottom = 20.0
-grow_horizontal = 2
-color = Color(0.278431, 0.211765, 0.156863, 1)
-
-[node name="Shelves" type="ColorRect" parent="ShopInterior"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.1
-anchor_right = 0.25
-anchor_bottom = 0.55
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.137255, 0.101961, 0.0745098, 1)
-
-[node name="MemoryOrb1" type="ColorRect" parent="ShopInterior/Shelves"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.15
-anchor_right = 0.45
-anchor_bottom = 0.35
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.4, 0.6, 0.9, 0.7)
-
-[node name="MemoryOrb2" type="ColorRect" parent="ShopInterior/Shelves"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.55
-anchor_top = 0.15
-anchor_right = 0.8
-anchor_bottom = 0.35
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9, 0.5, 0.6, 0.7)
-
-[node name="MemoryOrb3" type="ColorRect" parent="ShopInterior/Shelves"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.45
-anchor_right = 0.45
-anchor_bottom = 0.65
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.6, 0.9, 0.5, 0.7)
-
-[node name="MemoryOrb4" type="ColorRect" parent="ShopInterior/Shelves"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.55
-anchor_top = 0.45
-anchor_right = 0.8
-anchor_bottom = 0.65
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9, 0.8, 0.3, 0.7)
-
-[node name="Window" type="ColorRect" parent="ShopInterior"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.75
-anchor_top = 0.1
-anchor_right = 0.95
-anchor_bottom = 0.55
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.117647, 0.137255, 0.2, 1)
-
-[node name="RainEffect" type="ColorRect" parent="ShopInterior/Window"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.3, 0.4, 0.6, 0.3)
-
 [node name="NeonSign" type="Label" parent="ShopInterior"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.35
-anchor_top = 0.05
+anchor_top = 0.02
 anchor_right = 0.65
-anchor_bottom = 0.12
+anchor_bottom = 0.08
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.658824, 0.333333, 0.968627, 1)
+theme_override_colors/font_color = Color(0.65, 0.55, 0.98, 1)
+theme_override_colors/font_shadow_color = Color(0.65, 0.55, 0.98, 0.5)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 42
 text = "기억의 전당포"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="OrbDisplay1" type="TextureRect" parent="ShopInterior"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.15
+anchor_right = 0.13
+anchor_bottom = 0.25
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_orb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="OrbDisplay2" type="TextureRect" parent="ShopInterior"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.18
+anchor_right = 0.20
+anchor_bottom = 0.28
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_orb_cyan")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="OrbDisplay3" type="TextureRect" parent="ShopInterior"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10
+anchor_top = 0.30
+anchor_right = 0.15
+anchor_bottom = 0.40
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_orb")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 1
@@ -155,7 +109,7 @@ offset_left = 20.0
 offset_top = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.8, 0.8, 0.9, 1)
+theme_override_colors/font_color = Color(0, 0.96, 0.83, 1)
 theme_override_font_sizes/font_size = 28
 text = "Day 1"
 
@@ -167,16 +121,16 @@ anchor_right = 1.0
 offset_left = -280.0
 offset_top = 10.0
 offset_right = -20.0
-offset_bottom = 140.0
+offset_bottom = 150.0
 grow_horizontal = 0
 
 [node name="VBox" type="VBoxContainer" parent="UI/ReputationPanel"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 10
 
 [node name="Title" type="Label" parent="UI/ReputationPanel/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.658824, 0.333333, 0.968627, 1)
+theme_override_colors/font_color = Color(0.65, 0.55, 0.98, 1)
 theme_override_font_sizes/font_size = 20
 text = "평판"
 horizontal_alignment = 1
@@ -187,6 +141,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UI/ReputationPanel/VBox/MercyBar"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.8, 0.9, 1)
 theme_override_font_sizes/font_size = 16
 text = "자비"
 
@@ -202,6 +157,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UI/ReputationPanel/VBox/JusticeBar"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.7, 0.4, 1)
 theme_override_font_sizes/font_size = 16
 text = "정의"
 
@@ -217,6 +173,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UI/ReputationPanel/VBox/ProfitBar"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.9, 0.5, 1)
 theme_override_font_sizes/font_size = 16
 text = "이익"
 
@@ -230,13 +187,13 @@ show_percentage = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.3
-anchor_top = 0.2
+anchor_top = 0.15
 anchor_right = 0.7
 anchor_bottom = 0.6
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CustomerSprite" type="ColorRect" parent="CustomerArea"]
+[node name="CustomerPortrait" type="TextureRect" parent="CustomerArea"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -244,18 +201,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -150.0
-offset_right = 100.0
-offset_bottom = 150.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.5, 0.5, 0.6, 1)
+expand_mode = 1
+stretch_mode = 5
 
 [node name="BottomPanel" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.8
+anchor_top = 0.78
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -270,10 +228,10 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBox" type="VBoxContainer" parent="BottomPanel/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="StatusLabel" type="Label" parent="BottomPanel/MarginContainer/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.8, 0.8, 0.9, 1)
 theme_override_font_sizes/font_size = 24
 text = "전당포 문을 열었습니다. 손님을 기다리는 중..."
 horizontal_alignment = 1

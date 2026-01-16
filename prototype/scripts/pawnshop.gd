@@ -11,8 +11,15 @@ var main_controller: Node = null
 @onready var status_label: Label = $BottomPanel/MarginContainer/VBox/StatusLabel
 @onready var wait_button: Button = $BottomPanel/MarginContainer/VBox/WaitButton
 @onready var next_day_button: Button = $BottomPanel/MarginContainer/VBox/NextDayButton
-@onready var customer_sprite: ColorRect = $CustomerArea/CustomerSprite
+@onready var customer_portrait: TextureRect = $CustomerArea/CustomerPortrait
 @onready var neon_sign: Label = $ShopInterior/NeonSign
+
+# 캐릭터 포트레잇 경로 매핑
+const PORTRAIT_PATHS: Dictionary = {
+	"minji": "res://assets/portraits/portrait_minji.png",
+	"park_elder": "res://assets/portraits/portrait_park_elder.png",
+	"jung": "res://assets/portraits/portrait_jung.png"
+}
 
 var customer_entered: bool = false
 
@@ -67,12 +74,18 @@ func _on_wait_button_pressed() -> void:
 	_show_customer(customer)
 
 func _show_customer(customer: Dictionary) -> void:
-	customer_sprite.visible = true
-	customer_sprite.modulate.a = 0.0
-	customer_sprite.color = customer.memory_color.lightened(0.3)
+	# 캐릭터 포트레잇 로드
+	var portrait_key = customer.get("portrait_key", customer.id)
+	if PORTRAIT_PATHS.has(portrait_key):
+		var portrait_texture = load(PORTRAIT_PATHS[portrait_key])
+		if portrait_texture:
+			customer_portrait.texture = portrait_texture
+
+	customer_portrait.visible = true
+	customer_portrait.modulate.a = 0.0
 
 	var tween = create_tween()
-	tween.tween_property(customer_sprite, "modulate:a", 1.0, 0.5)
+	tween.tween_property(customer_portrait, "modulate:a", 1.0, 0.5)
 
 	await tween.finished
 
@@ -88,7 +101,7 @@ func _on_reputation_changed(_rep_type: String, _value: int) -> void:
 	_update_ui()
 
 func _on_customer_completed(_customer_id: String, _result: String) -> void:
-	customer_sprite.visible = false
+	customer_portrait.visible = false
 	customer_entered = false
 	_update_ui()
 

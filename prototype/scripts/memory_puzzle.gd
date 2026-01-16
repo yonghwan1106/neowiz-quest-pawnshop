@@ -9,8 +9,7 @@ var customer_data: Dictionary = {}
 
 @onready var title_label: Label = $TitleLabel
 @onready var subtitle_label: Label = $SubtitleLabel
-@onready var memory_orb: ColorRect = $PuzzleArea/MemoryOrb
-@onready var orb_glow: ColorRect = $PuzzleArea/MemoryOrb/OrbGlow
+@onready var memory_orb: TextureRect = $PuzzleArea/MemoryOrb
 @onready var slot_container: Control = $PuzzleArea/SlotContainer
 @onready var fragment_container: Control = $PuzzleArea/FragmentContainer
 @onready var progress_bar: ProgressBar = $ProgressBar
@@ -18,13 +17,13 @@ var customer_data: Dictionary = {}
 @onready var hint_label: Label = $HintLabel
 
 var slots: Array[Panel] = []
-var fragments: Array[ColorRect] = []
+var fragments: Array[Control] = []
 var slot_states: Array[bool] = [false, false, false, false]  # 각 슬롯이 채워졌는지
 var correct_placements: int = 0
 var total_slots: int = 4
 var is_puzzle_complete: bool = false
 
-var dragging_fragment: ColorRect = null
+var dragging_fragment: Control = null
 var drag_offset: Vector2 = Vector2.ZERO
 
 # 파편 색상 (기억 유형에 따라 달라짐)
@@ -61,56 +60,36 @@ func _setup_puzzle() -> void:
 			base_color.darkened(0.1),
 			base_color.darkened(0.2)
 		]
-		memory_orb.color = base_color.darkened(0.5)
-		memory_orb.color.a = 0.3
+		memory_orb.modulate = base_color.lightened(0.3)
 
-	# 파편 생성
-	_create_fragments()
+	# 파편 초기화 (씬에 있는 기존 파편 사용)
+	_init_fragments()
 
 	# 오브 글로우 애니메이션
 	_animate_orb()
 
-func _create_fragments() -> void:
-	# 기존 파편 제거
-	for child in fragment_container.get_children():
-		child.queue_free()
+func _init_fragments() -> void:
+	# 씬에 있는 기존 파편들 초기화
 	fragments.clear()
 
-	# 새 파편 생성
-	var positions = [
-		Vector2(50, 50),
-		Vector2(200, 30),
-		Vector2(400, 60),
-		Vector2(600, 40)
-	]
-
 	for i in range(4):
-		var fragment = ColorRect.new()
-		fragment.custom_minimum_size = Vector2(80, 80)
-		fragment.size = Vector2(80, 80)
-		fragment.position = positions[i]
-		fragment.color = fragment_colors[i]
-		fragment.mouse_filter = Control.MOUSE_FILTER_STOP
+		var fragment_name = "Fragment" + str(i + 1)
+		var fragment = fragment_container.get_node_or_null(fragment_name)
+		if fragment:
+			# 드래그 가능하도록 설정
+			fragment.mouse_filter = Control.MOUSE_FILTER_STOP
+			fragment.set_meta("fragment_id", i)
+			fragment.set_meta("original_position", fragment.position)
 
-		# 파편 번호 레이블
-		var label = Label.new()
-		label.text = str(i + 1)
-		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		label.anchors_preset = Control.PRESET_FULL_RECT
-		label.add_theme_font_size_override("font_size", 24)
-		fragment.add_child(label)
+			# 색상 틴트 적용
+			fragment.modulate = fragment_colors[i]
 
-		fragment.set_meta("fragment_id", i)
-		fragment.set_meta("original_position", positions[i])
-
-		fragment_container.add_child(fragment)
-		fragments.append(fragment)
+			fragments.append(fragment)
 
 func _animate_orb() -> void:
 	var tween = create_tween().set_loops()
-	tween.tween_property(orb_glow, "modulate:a", 0.5, 1.0)
-	tween.tween_property(orb_glow, "modulate:a", 1.0, 1.0)
+	tween.tween_property(memory_orb, "modulate:a", 0.7, 1.0)
+	tween.tween_property(memory_orb, "modulate:a", 1.0, 1.0)
 
 func _input(event: InputEvent) -> void:
 	if is_puzzle_complete:
@@ -165,12 +144,11 @@ func _try_drop_fragment(mouse_pos: Vector2) -> void:
 	dragging_fragment.z_index = 0
 	dragging_fragment = null
 
-func _place_fragment_in_slot(fragment: ColorRect, slot_index: int) -> void:
+func _place_fragment_in_slot(fragment: Control, slot_index: int) -> void:
 	var slot = slots[slot_index]
 	var fragment_id = fragment.get_meta("fragment_id")
 
 	# 파편을 슬롯 위치로 이동
-	var slot_global_pos = slot.global_position
 	var slot_size = slot.size
 
 	fragment.reparent(slot_container)
@@ -179,7 +157,7 @@ func _place_fragment_in_slot(fragment: ColorRect, slot_index: int) -> void:
 
 	# 슬롯 색상 변경
 	var slot_style = StyleBoxFlat.new()
-	slot_style.bg_color = fragment.color
+	slot_style.bg_color = fragment_colors[fragment_id]
 	slot.add_theme_stylebox_override("panel", slot_style)
 	slot.get_node("Label").text = ""
 
@@ -210,8 +188,8 @@ func _complete_puzzle() -> void:
 
 	# 오브 글로우 강화
 	var tween = create_tween()
-	tween.tween_property(memory_orb, "color:a", 0.8, 1.0)
-	tween.parallel().tween_property(orb_glow, "color", Color(0.9, 0.7, 1.0, 0.5), 1.0)
+	tween.tween_property(memory_orb, "modulate", Color(1.2, 1.0, 1.4, 1.0), 1.0)
+	tween.parallel().tween_property(memory_orb, "scale", Vector2(1.2, 1.2), 1.0)
 
 	await get_tree().create_timer(2.0).timeout
 

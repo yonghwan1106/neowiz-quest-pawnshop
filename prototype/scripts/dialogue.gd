@@ -19,9 +19,17 @@ var typing_speed: float = 0.03
 @onready var choice1_button: Button = $ChoiceContainer/Choice1
 @onready var choice2_button: Button = $ChoiceContainer/Choice2
 @onready var choice3_button: Button = $ChoiceContainer/Choice3
-@onready var customer_portrait: ColorRect = $CharacterArea/CustomerPortrait
+@onready var customer_portrait: TextureRect = $CharacterArea/CustomerPortrait
 @onready var customer_name_label: Label = $CharacterArea/CustomerPortrait/NameLabel
-@onready var protagonist_portrait: ColorRect = $CharacterArea/ProtagonistPortrait
+@onready var protagonist_portrait: TextureRect = $CharacterArea/ProtagonistPortrait
+
+# 캐릭터 포트레잇 경로 매핑
+const PORTRAIT_PATHS: Dictionary = {
+	"minji": "res://assets/portraits/portrait_minji.png",
+	"park_elder": "res://assets/portraits/portrait_park_elder.png",
+	"jung": "res://assets/portraits/portrait_jung.png",
+	"jinwoo": "res://assets/portraits/portrait_jinwoo.png"
+}
 
 func _ready() -> void:
 	choice1_button.pressed.connect(_on_choice_pressed.bind(0))
@@ -49,7 +57,14 @@ func _setup_customer() -> void:
 		return
 
 	customer_name_label.text = customer.name
-	customer_portrait.color = customer.memory_color.lightened(0.2)
+
+	# 캐릭터 포트레잇 로드
+	var portrait_key = customer.get("portrait_key", customer_id)
+	if PORTRAIT_PATHS.has(portrait_key):
+		var portrait_texture = load(PORTRAIT_PATHS[portrait_key])
+		if portrait_texture:
+			customer_portrait.texture = portrait_texture
+			customer_portrait.visible = true
 
 func _start_dialogue() -> void:
 	DialogueManager.start_dialogue(customer_id)

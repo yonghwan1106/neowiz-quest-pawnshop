@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwh5g2pk8q7y3"]
+[gd_scene load_steps=4 format=3 uid="uid://bwh5g2pk8q7y3"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_title"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/bg_title.png" id="2_bg"]
+[ext_resource type="Theme" path="res://resources/theme_neowiz.tres" id="3_theme"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -9,25 +11,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_theme")
 script = ExtResource("1_title")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0392157, 0.0392157, 0.0588235, 1)
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="GradientOverlay" type="ColorRect" parent="."]
+[node name="Overlay" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.101961, 0.101961, 0.180392, 0.5)
+color = Color(0, 0, 0, 0.3)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -46,14 +51,17 @@ theme_override_constants/separation = 30
 
 [node name="Title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.658824, 0.333333, 0.968627, 1)
+theme_override_colors/font_color = Color(0.65, 0.55, 0.98, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.96, 0.83, 0.5)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
 theme_override_font_sizes/font_size = 96
 text = "기억의 전당포"
 horizontal_alignment = 1
 
 [node name="Subtitle" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.584314, 0.647059, 0.72549, 1)
+theme_override_colors/font_color = Color(0, 0.96, 0.83, 0.8)
 theme_override_font_sizes/font_size = 32
 text = "The Pawnshop of Memories"
 horizontal_alignment = 1
@@ -66,7 +74,6 @@ layout_mode = 2
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 28
 text = "게임 시작"
 
@@ -74,7 +81,6 @@ text = "게임 시작"
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_font_sizes/font_size = 28
 text = "종료"
 
@@ -90,7 +96,7 @@ offset_top = -40.0
 offset_right = -20.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.4, 0.4, 0.5, 1)
+theme_override_colors/font_color = Color(0.4, 0.4, 0.5, 0.8)
 theme_override_font_sizes/font_size = 16
 text = "Prototype v0.1 | Neowiz Quest 2026"
 horizontal_alignment = 2
@@ -104,6 +110,6 @@ offset_left = 20.0
 offset_top = -40.0
 offset_right = 300.0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.4, 0.4, 0.5, 1)
+theme_override_colors/font_color = Color(0.4, 0.4, 0.5, 0.8)
 theme_override_font_sizes/font_size = 16
 text = "Creative Nexus"
