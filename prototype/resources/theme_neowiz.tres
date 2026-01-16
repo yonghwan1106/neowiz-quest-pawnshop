@@ -1,4 +1,8 @@
-[gd_resource type="Theme" format=3]
+[gd_resource type="Theme" load_steps=16 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/NotoSansKR-Regular.ttf" id="1_font_regular"]
+[ext_resource type="FontFile" path="res://assets/fonts/NotoSansKR-Bold.ttf" id="2_font_bold"]
+[ext_resource type="FontFile" path="res://assets/fonts/BlackHanSans-Regular.ttf" id="3_font_title"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
 bg_color = Color(0.04, 0.06, 0.1, 0.8)
@@ -144,13 +148,15 @@ bg_color = Color(0.65, 0.55, 0.98, 0.3)
 
 [resource]
 default_base_scale = 1.0
-default_font_size = 18
+default_font = ExtResource("1_font_regular")
+default_font_size = 20
 
 Button/colors/font_color = Color(0.89, 0.91, 0.94, 1)
 Button/colors/font_hover_color = Color(0, 0.96, 0.83, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_disabled_color = Color(0.5, 0.5, 0.55, 0.7)
-Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("2_font_bold")
+Button/font_sizes/font_size = 22
 Button/styles/normal = SubResource("StyleBoxFlat_button_normal")
 Button/styles/hover = SubResource("StyleBoxFlat_button_hover")
 Button/styles/pressed = SubResource("StyleBoxFlat_button_pressed")
@@ -160,13 +166,15 @@ Label/colors/font_color = Color(0.89, 0.91, 0.94, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0.5)
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
-Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("1_font_regular")
+Label/font_sizes/font_size = 20
 
 Panel/styles/panel = SubResource("StyleBoxFlat_panel")
 
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_dialogue_box")
 
 ProgressBar/colors/font_color = Color(0.89, 0.91, 0.94, 1)
+ProgressBar/fonts/font = ExtResource("1_font_regular")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_progress_bg")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_progress_fill")
 
@@ -174,14 +182,18 @@ LineEdit/colors/font_color = Color(0.89, 0.91, 0.94, 1)
 LineEdit/colors/font_placeholder_color = Color(0.5, 0.55, 0.6, 0.7)
 LineEdit/colors/caret_color = Color(0, 0.96, 0.83, 1)
 LineEdit/colors/selection_color = Color(0.65, 0.55, 0.98, 0.4)
+LineEdit/fonts/font = ExtResource("1_font_regular")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_lineedit")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_lineedit_focus")
 
 RichTextLabel/colors/default_color = Color(0.89, 0.91, 0.94, 1)
-RichTextLabel/font_sizes/normal_font_size = 18
+RichTextLabel/fonts/normal_font = ExtResource("1_font_regular")
+RichTextLabel/fonts/bold_font = ExtResource("2_font_bold")
+RichTextLabel/font_sizes/normal_font_size = 20
 
 PopupMenu/colors/font_color = Color(0.89, 0.91, 0.94, 1)
 PopupMenu/colors/font_hover_color = Color(0, 0.96, 0.83, 1)
+PopupMenu/fonts/font = ExtResource("1_font_regular")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_popup")
 PopupMenu/styles/separator = SubResource("StyleBoxFlat_separator")
 

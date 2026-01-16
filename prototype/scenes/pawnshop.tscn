@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3yk8v5k9q8y4"]
+[gd_scene load_steps=10 format=3 uid="uid://c3yk8v5k9q8y4"]
 
 [ext_resource type="Script" path="res://scripts/pawnshop.gd" id="1_pawnshop"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/bg_pawnshop.png" id="2_bg"]
 [ext_resource type="Theme" path="res://resources/theme_neowiz.tres" id="3_theme"]
 [ext_resource type="Texture2D" path="res://assets/effects/memory_orb.png" id="4_orb"]
 [ext_resource type="Texture2D" path="res://assets/effects/memory_orb_cyan.png" id="5_orb_cyan"]
+[ext_resource type="Texture2D" path="res://assets/ui/icon_mercy.png" id="6_icon_mercy"]
+[ext_resource type="Texture2D" path="res://assets/ui/icon_justice.png" id="7_icon_justice"]
+[ext_resource type="Texture2D" path="res://assets/ui/icon_profit.png" id="8_icon_profit"]
+[ext_resource type="Texture2D" path="res://assets/ui/icon_memory.png" id="9_icon_memory"]
 
 [node name="Pawnshop" type="Control"]
 layout_mode = 3
@@ -137,48 +141,72 @@ horizontal_alignment = 1
 
 [node name="MercyBar" type="HBoxContainer" parent="UI/ReputationPanel/VBox"]
 layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="UI/ReputationPanel/VBox/MercyBar"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("6_icon_mercy")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="UI/ReputationPanel/VBox/MercyBar"]
-custom_minimum_size = Vector2(60, 0)
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.8, 0.9, 1)
 theme_override_font_sizes/font_size = 16
 text = "자비"
 
 [node name="ProgressBar" type="ProgressBar" parent="UI/ReputationPanel/VBox/MercyBar"]
-custom_minimum_size = Vector2(150, 20)
+custom_minimum_size = Vector2(130, 20)
 layout_mode = 2
 value = 50.0
 show_percentage = false
 
 [node name="JusticeBar" type="HBoxContainer" parent="UI/ReputationPanel/VBox"]
 layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="UI/ReputationPanel/VBox/JusticeBar"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("7_icon_justice")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="UI/ReputationPanel/VBox/JusticeBar"]
-custom_minimum_size = Vector2(60, 0)
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.7, 0.4, 1)
 theme_override_font_sizes/font_size = 16
 text = "정의"
 
 [node name="ProgressBar" type="ProgressBar" parent="UI/ReputationPanel/VBox/JusticeBar"]
-custom_minimum_size = Vector2(150, 20)
+custom_minimum_size = Vector2(130, 20)
 layout_mode = 2
 value = 50.0
 show_percentage = false
 
 [node name="ProfitBar" type="HBoxContainer" parent="UI/ReputationPanel/VBox"]
 layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="UI/ReputationPanel/VBox/ProfitBar"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("8_icon_profit")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="UI/ReputationPanel/VBox/ProfitBar"]
-custom_minimum_size = Vector2(60, 0)
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.9, 0.5, 1)
 theme_override_font_sizes/font_size = 16
 text = "이익"
 
 [node name="ProgressBar" type="ProgressBar" parent="UI/ReputationPanel/VBox/ProfitBar"]
-custom_minimum_size = Vector2(150, 20)
+custom_minimum_size = Vector2(130, 20)
 layout_mode = 2
 value = 50.0
 show_percentage = false

@@ -12,6 +12,14 @@ var main_controller: Node = null
 @onready var profit_value: Label = $VBoxContainer/ReputationSummary/ProfitBox/Value
 @onready var restart_button: Button = $VBoxContainer/ButtonContainer/RestartButton
 @onready var quit_button: Button = $VBoxContainer/ButtonContainer/QuitButton
+@onready var ending_illustration: TextureRect = $EndingIllustration
+
+# 엔딩 일러스트 리소스
+var ending_illustrations = {
+	"mercy": preload("res://assets/illustrations/ending_mercy.png"),
+	"justice": preload("res://assets/illustrations/ending_justice.png"),
+	"profit": preload("res://assets/illustrations/ending_profit.png")
+}
 
 func _ready() -> void:
 	restart_button.pressed.connect(_on_restart_pressed)
@@ -71,6 +79,10 @@ func _get_result_text(customer_id: String, result: String) -> String:
 			return "알 수 없음"
 
 func _set_ending_message(ending_type: String) -> void:
+	# 엔딩 일러스트 설정
+	if ending_illustrations.has(ending_type) and ending_illustration:
+		ending_illustration.texture = ending_illustrations[ending_type]
+
 	match ending_type:
 		"mercy":
 			ending_title.text = "자비로운 전당포지기"

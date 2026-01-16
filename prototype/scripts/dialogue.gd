@@ -28,6 +28,7 @@ const PORTRAIT_PATHS: Dictionary = {
 	"minji": "res://assets/portraits/portrait_minji.png",
 	"park_elder": "res://assets/portraits/portrait_park_elder.png",
 	"jung": "res://assets/portraits/portrait_jung.png",
+	"jung_seokhyun": "res://assets/portraits/portrait_jung.png",
 	"jinwoo": "res://assets/portraits/portrait_jinwoo.png"
 }
 
