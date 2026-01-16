@@ -1,0 +1,38 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://dobv3ubhg6def"
+path="res://.godot/imported/NotoSansKR-Bold.ttf-68cd2d61d313c4b8bf28136cd45e408d.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/NotoSansKR-Bold.ttf"
+dest_files=["res://.godot/imported/NotoSansKR-Bold.ttf-68cd2d61d313c4b8bf28136cd45e408d.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[{
+"glyphs": [],
+"name": "Korean",
+"size": Vector2i(16, 0),
+"chars": "가각간갈감갑강개객거건검겁게견결경계고곡곤골공과관광괴교구국군굴궁권귀규균극근글금급기긴길김깊까깨꼭꿈끝나날남납낭내너널네녀녁년념녕노녹논농뇌능니다단달담답당대댁더덕던덜덤덩데도독돈돌동두둘둥득들등디딩라락란랄람랍랑래랭러럭런렁레려력련렬령례로록론롤롱뢰료루룩룬룰름릉리릭린림립링마막만말망매맥맨머먹먼멀멈멍메멱면멸명몇모목몬몰몸몽묘무묵문물미민밀밑바박반발밤밥방배백번벌범법벗벼벽변별병보복본볼봉부북분불붕비빈빌빔빙빠빼사삭산살삼상새색생서석선설섬성세섹센소속손솔송쇠수숙순술숨숲쉬스슬습승시식신실심십싱쌍씨아악안알암압앙애액앤야약양어억언얼엄업엇에엔여역연열염엽영예오옥온올옴옹와완왕외왼요욕용우욱운울움웅원월위유육윤율은을음응의이익인일임입잉자작잔잘잠잡장재쟁저적전절점접정제젠조족존졸종좌죄주죽준줄중쥐즈즉증지직진질짐집징차착찬찰참창채책처척천철첨청체초촌총최추축춘출충취측층치칙친칠침칭카칸코콘쿠큰클키타탁탄탈탐탑탕태택터털테텐토톤통투특틀티팀파판팔패팩퍼페편평폐포폭표품풍피픽필핑하학한할함합항해핵헌험헤혁현혈협형혜호혹혼홀홍화확환활황회획횡효후훈훌훼휘휴흐흑흔흙흥희흰히힘"
+}]
+language_support={"ko": true}
+script_support={"Hangul": true}
+opentype_features={}

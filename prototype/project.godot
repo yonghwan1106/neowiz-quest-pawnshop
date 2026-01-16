@@ -23,6 +23,8 @@ config/icon="res://icon.svg"
 
 GameManager="*res://scripts/game_manager.gd"
 DialogueManager="*res://scripts/dialogue_manager.gd"
+SaveManager="*res://scripts/save_manager.gd"
+AudioManager="*res://scripts/audio_manager.gd"
 
 [display]
 

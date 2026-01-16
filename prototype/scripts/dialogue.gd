@@ -37,6 +37,11 @@ func _ready() -> void:
 	choice2_button.pressed.connect(_on_choice_pressed.bind(1))
 	choice3_button.pressed.connect(_on_choice_pressed.bind(2))
 
+	# 버튼 호버 효과
+	choice1_button.mouse_entered.connect(_on_choice_hover.bind(choice1_button))
+	choice2_button.mouse_entered.connect(_on_choice_hover.bind(choice2_button))
+	choice3_button.mouse_entered.connect(_on_choice_hover.bind(choice3_button))
+
 func set_main_controller(controller: Node) -> void:
 	main_controller = controller
 
@@ -51,6 +56,21 @@ func setup(data: Dictionary) -> void:
 			resume_after_puzzle()
 		else:
 			_start_dialogue()
+
+func _play_sfx(sfx_name: String) -> void:
+	var audio_manager = get_node_or_null("/root/AudioManager")
+	if audio_manager and audio_manager.has_method("play_sfx"):
+		audio_manager.play_sfx(sfx_name)
+
+func _start_typing_sfx() -> void:
+	var audio_manager = get_node_or_null("/root/AudioManager")
+	if audio_manager and audio_manager.has_method("start_typing_sfx"):
+		audio_manager.start_typing_sfx(0.06)
+
+func _stop_typing_sfx() -> void:
+	var audio_manager = get_node_or_null("/root/AudioManager")
+	if audio_manager and audio_manager.has_method("stop_typing_sfx"):
+		audio_manager.stop_typing_sfx()
 
 func _setup_customer() -> void:
 	var customer = GameManager.get_current_customer()
@@ -89,7 +109,9 @@ func _show_current_line() -> void:
 
 	# 타이핑 효과
 	is_typing = true
+	_start_typing_sfx()
 	await _type_text(line.text)
+	_stop_typing_sfx()
 	is_typing = false
 	continue_hint.visible = true
 
@@ -117,7 +139,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if is_typing:
 			is_typing = false
+			_stop_typing_sfx()
 		elif continue_hint.visible:
+			_play_sfx("button_click")
 			_advance_dialogue()
 
 func _advance_dialogue() -> void:
@@ -151,7 +175,15 @@ func _show_choices() -> void:
 		choice2_button.text = choices[1].text
 		choice3_button.text = choices[2].text
 
+func _on_choice_hover(button: Button) -> void:
+	var hover_tween = create_tween()
+	hover_tween.tween_property(button, "scale", Vector2(1.02, 1.02), 0.1)
+	hover_tween.tween_property(button, "scale", Vector2(1.0, 1.0), 0.1)
+	_play_sfx("button_hover")
+
 func _on_choice_pressed(choice_index: int) -> void:
+	_play_sfx("choice_select")
+
 	var choices = DialogueManager.get_choices()
 	if choice_index < choices.size():
 		selected_result = choices[choice_index].result

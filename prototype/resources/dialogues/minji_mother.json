@@ -1,0 +1,86 @@
+{
+  "customer_id": "minji_mother",
+  "name": "민지 어머니",
+  "metadata": {
+    "age": 45,
+    "portrait": "res://assets/portraits/portrait_minji_mother.png",
+    "portrait_key": "minji_mother",
+    "memory_type": "love",
+    "memory_color": [1.0, 0.9, 0.6, 1.0],
+    "summary": "딸의 팔린 기억을 되찾으러 온 어머니",
+    "day": 4,
+    "trust_required": 0,
+    "puzzle_difficulty": 2,
+    "requires_flag": "minji_accept"
+  },
+  "dialogue": {
+    "intro": [
+      {"speaker": "민지 어머니", "text": "당신이... 내 딸 기억을 산 사람이죠?", "emotion": "desperate"},
+      {"speaker": "진우", "text": "...민지 씨의 어머님이시군요.", "emotion": "surprised"},
+      {"speaker": "민지 어머니", "text": "민지가... 할머니 기억을 팔았다는 걸 알았어요.", "emotion": "pained"},
+      {"speaker": "민지 어머니", "text": "수술은 성공했지만... 아이가 이상해졌어요.", "emotion": "worried"},
+      {"speaker": "진우", "text": "어떻게요?", "emotion": "concerned"},
+      {"speaker": "민지 어머니", "text": "바다를 보면 울어요. 왜 우는지 모른다면서...", "emotion": "heartbroken"},
+      {"speaker": "민지 어머니", "text": "제발, 그 기억을 되돌려주세요. 돈은 얼마든지...", "emotion": "pleading"}
+    ],
+    "after_puzzle": [
+      {"speaker": "진우", "text": "어머님... 한번 판매된 기억은 되돌리기 어렵습니다.", "emotion": "hesitant"},
+      {"speaker": "민지 어머니", "text": "불가능한 건가요?", "emotion": "fearful"},
+      {"speaker": "진우", "text": "불가능하진 않지만... 위험합니다.", "emotion": "honest"},
+      {"speaker": "진우", "text": "기억을 되돌려도 완벽하게 복원되지 않을 수 있어요.", "emotion": "warning"},
+      {"speaker": "민지 어머니", "text": "그래도... 민지가 할머니를 기억할 수 있다면...", "emotion": "hopeful"},
+      {"speaker": "민지 어머니", "text": "저는 뭐든 할 수 있어요.", "emotion": "determined"}
+    ],
+    "choices": [
+      {"id": "accept", "text": "[반환] 기억을 민지에게 돌려준다", "result": "accept"},
+      {"id": "reject", "text": "[거절] 위험이 너무 큽니다", "result": "reject"},
+      {"id": "modify", "text": "[수정] 기억의 복사본을 만들어 드린다", "result": "modify"}
+    ],
+    "endings": {
+      "accept": [
+        {"speaker": "진우", "text": "...알겠습니다. 기억을 돌려드리겠습니다.", "emotion": "determined"},
+        {"speaker": "민지 어머니", "text": "감사합니다... 정말 감사합니다!", "emotion": "grateful"},
+        {"speaker": "내레이션", "text": "기억 복원은 부분적으로 성공했다."},
+        {"speaker": "내레이션", "text": "민지는 할머니의 얼굴을 기억해냈지만, 그 여름의 세부 사항은 흐릿했다."},
+        {"speaker": "내레이션", "text": "하지만 그녀는 더 이상 이유 모를 눈물을 흘리지 않았다."}
+      ],
+      "reject": [
+        {"speaker": "진우", "text": "죄송합니다. 복원 과정이 너무 위험합니다.", "emotion": "regretful"},
+        {"speaker": "민지 어머니", "text": "그럼... 민지는 평생 그렇게 살아야 하나요?", "emotion": "devastated"},
+        {"speaker": "진우", "text": "아닙니다. 새로운 기억을 만들 수 있어요.", "emotion": "gentle"},
+        {"speaker": "진우", "text": "어머님이 할머니 이야기를 해주세요. 사진도 보여주시고.", "emotion": "encouraging"},
+        {"speaker": "진우", "text": "직접 경험한 기억은 아니지만... 그것도 기억입니다.", "emotion": "hopeful"},
+        {"speaker": "내레이션", "text": "민지 어머니는 매일 밤 딸에게 할머니 이야기를 들려주었다."},
+        {"speaker": "내레이션", "text": "민지는 '기억'하진 못했지만, 할머니를 '알게' 되었다."}
+      ],
+      "modify": [
+        {"speaker": "진우", "text": "다른 방법이 있습니다.", "emotion": "thoughtful"},
+        {"speaker": "진우", "text": "원본 기억의 복사본을 만들 수 있어요.", "emotion": "explaining"},
+        {"speaker": "민지 어머니", "text": "복사본이요?", "emotion": "curious"},
+        {"speaker": "진우", "text": "완벽하진 않지만, 핵심적인 감정과 이미지는 담깁니다.", "emotion": "hopeful"},
+        {"speaker": "진우", "text": "민지가 이 복사본을 받으면, '아, 이런 기억이 있었구나'라고 느낄 거예요.", "emotion": "gentle"},
+        {"speaker": "내레이션", "text": "민지는 복사된 기억을 이식받았다."},
+        {"speaker": "내레이션", "text": "그것은 직접 경험한 것처럼 생생하진 않았지만, 할머니의 따뜻함은 느낄 수 있었다."}
+      ]
+    }
+  },
+  "reputation_effects": {
+    "accept": {"mercy": 20, "justice": 5, "profit": -10},
+    "reject": {"mercy": 5, "justice": 10, "profit": 0},
+    "modify": {"mercy": 15, "justice": 10, "profit": 0}
+  },
+  "consequences": {
+    "accept": {
+      "news": "기억 복원 성공 사례... '전당포 거래의 새 국면'",
+      "followup_day": null
+    },
+    "reject": {
+      "news": "기억 상실 피해자 가족 모임 결성... '새 기억을 만들자'",
+      "followup_day": null
+    },
+    "modify": {
+      "news": "기억 복제 기술 상용화... 윤리적 논쟁 가열",
+      "followup_day": null
+    }
+  }
+}

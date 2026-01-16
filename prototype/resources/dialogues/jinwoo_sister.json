@@ -1,0 +1,110 @@
+{
+  "customer_id": "jinwoo_sister",
+  "name": "김수연",
+  "metadata": {
+    "age": 24,
+    "portrait": "res://assets/portraits/portrait_suyeon.png",
+    "portrait_key": "jinwoo_sister",
+    "memory_type": "connection",
+    "memory_color": [0.3, 0.9, 0.9, 1.0],
+    "summary": "주인공 진우의 잊혀진 여동생",
+    "day": 5,
+    "trust_required": 0,
+    "puzzle_difficulty": 3,
+    "is_story_critical": true
+  },
+  "dialogue": {
+    "intro": [
+      {"speaker": "김수연", "text": "...오빠?", "emotion": "hopeful"},
+      {"speaker": "진우", "text": "손님, 저를 아시나요?", "emotion": "confused"},
+      {"speaker": "김수연", "text": "오빠... 나야, 수연이.", "emotion": "pained"},
+      {"speaker": "진우", "text": "죄송합니다, 저는 '수연'이라는 분을 모릅니다.", "emotion": "apologetic"},
+      {"speaker": "김수연", "text": "...그럴 리가 없어. 오빠가 직접 팔았잖아.", "emotion": "desperate"},
+      {"speaker": "김수연", "text": "5년 전에... 나에 대한 기억 전부를.", "emotion": "heartbroken"},
+      {"speaker": "진우", "text": "...뭐라고요?", "emotion": "shocked"}
+    ],
+    "after_puzzle": [
+      {"speaker": "김수연", "text": "기억나? 우리 어릴 때 같이 살던 집.", "emotion": "nostalgic"},
+      {"speaker": "진우", "text": "...왜 제가 여동생에 대한 기억을 팔았죠?", "emotion": "disturbed"},
+      {"speaker": "김수연", "text": "네오코프 때문이야.", "emotion": "bitter"},
+      {"speaker": "김수연", "text": "그들이 나를 납치해서... 기억 추출 실험에 이용했어.", "emotion": "traumatized"},
+      {"speaker": "김수연", "text": "오빠가 나를 구하려다 실패했고...", "emotion": "sad"},
+      {"speaker": "김수연", "text": "그 죄책감을 못 견뎌서 나에 대한 기억을 지웠어.", "emotion": "understanding"},
+      {"speaker": "진우", "text": "...내가 그랬다고?", "emotion": "horrified"}
+    ],
+    "branches": {
+      "ask_more": [
+        {"speaker": "진우", "text": "더 자세히 말해줘요. 네오코프가 뭘 한 거죠?", "emotion": "determined"},
+        {"speaker": "김수연", "text": "그들은 특별한 기억을 가진 사람들을 모았어.", "emotion": "serious"},
+        {"speaker": "김수연", "text": "나는... '완벽한 공감 능력'을 가진 희귀 케이스였대.", "emotion": "bitter"},
+        {"speaker": "김수연", "text": "내 기억을 추출해서 인공지능에 이식하려 했어.", "emotion": "angry"}
+      ]
+    },
+    "choices": [
+      {"id": "accept", "text": "[기억 복원] 수연에 대한 기억을 되찾는다", "result": "accept"},
+      {"id": "reject", "text": "[거부] 지금의 나로 살겠다", "result": "reject"},
+      {"id": "modify", "text": "[진실 추구] 네오코프의 비밀을 파헤친다", "result": "modify"}
+    ],
+    "endings": {
+      "accept": [
+        {"speaker": "진우", "text": "...기억을 되찾겠어.", "emotion": "resolved"},
+        {"speaker": "김수연", "text": "오빠...", "emotion": "tearful"},
+        {"speaker": "진우", "text": "네가 내 동생이라면, 잊고 살 수 없어.", "emotion": "determined"},
+        {"speaker": "내레이션", "text": "진우는 5년 전에 판 기억을 역추적했다."},
+        {"speaker": "내레이션", "text": "복원된 기억 속에서 그는 여동생과의 어린 시절을, 그리고 그날 밤의 참혹함을 모두 떠올렸다."},
+        {"speaker": "내레이션", "text": "그는 다시 무너졌지만, 이번엔 수연이 곁에 있었다."}
+      ],
+      "reject": [
+        {"speaker": "진우", "text": "...미안해. 하지만 지금의 나로 살겠어.", "emotion": "conflicted"},
+        {"speaker": "김수연", "text": "오빠...", "emotion": "devastated"},
+        {"speaker": "진우", "text": "그때의 내가 지운 데는 이유가 있었을 거야.", "emotion": "defensive"},
+        {"speaker": "진우", "text": "그 고통을 다시 짊어질 자신이 없어.", "emotion": "honest"},
+        {"speaker": "김수연", "text": "...알았어. 오빠 선택을 존중할게.", "emotion": "accepting"},
+        {"speaker": "내레이션", "text": "수연은 떠났다."},
+        {"speaker": "내레이션", "text": "진우는 편안했지만, 가끔 꿈에서 모르는 소녀가 손을 내밀었다."}
+      ],
+      "modify": [
+        {"speaker": "진우", "text": "잠깐. 네오코프... 그들이 아직도 이런 짓을 하고 있어?", "emotion": "suspicious"},
+        {"speaker": "김수연", "text": "응. 더 교묘해졌어.", "emotion": "serious"},
+        {"speaker": "진우", "text": "그럼 기억 복원보다 먼저 할 일이 있어.", "emotion": "determined"},
+        {"speaker": "진우", "text": "그들을 멈춰야 해.", "emotion": "resolute"},
+        {"speaker": "김수연", "text": "오빠... 같이 싸울 거야?", "emotion": "hopeful"},
+        {"speaker": "진우", "text": "내 여동생을 실험 대상으로 삼은 놈들이야. 당연하지.", "emotion": "protective"},
+        {"speaker": "내레이션", "text": "진우와 수연은 네오코프의 진실을 파헤치기 시작했다."},
+        {"speaker": "내레이션", "text": "기억의 전당포는 이제 저항의 거점이 되었다."}
+      ]
+    }
+  },
+  "reputation_effects": {
+    "accept": {"mercy": 15, "justice": 5, "profit": 0},
+    "reject": {"mercy": -10, "justice": 0, "profit": 5},
+    "modify": {"mercy": 10, "justice": 25, "profit": -5}
+  },
+  "consequences": {
+    "accept": {
+      "news": null,
+      "followup_day": null,
+      "unlock_flag": "jinwoo_truth_revealed",
+      "unlock_flag_2": "chose_remember"
+    },
+    "reject": {
+      "news": null,
+      "followup_day": null,
+      "unlock_flag": "chose_forget"
+    },
+    "modify": {
+      "news": "[속보] 네오코프 내부 고발... '기억 실험' 증거 유출",
+      "followup_day": 6,
+      "unlock_flag": "jinwoo_truth_revealed",
+      "unlock_flag_2": "exposed_neocorp"
+    }
+  },
+  "protagonist_backstory": {
+    "revelation": "진우는 5년 전 여동생 수연을 네오코프로부터 구하려다 실패했다. 그 죄책감을 견디지 못해 수연에 대한 모든 기억을 지웠고, 이후 기억 전당포를 운영하게 되었다.",
+    "clues_before_reveal": [
+      "진우의 책상 사진이 흐릿하게 처리됨",
+      "때때로 느끼는 이유 없는 죄책감",
+      "특정 색상(시안)에 대한 이상한 반응"
+    ]
+  }
+}

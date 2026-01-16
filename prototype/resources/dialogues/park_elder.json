@@ -1,0 +1,82 @@
+{
+  "customer_id": "park_elder",
+  "name": "박 노인",
+  "metadata": {
+    "age": 72,
+    "portrait": "res://assets/portraits/portrait_park_elder.png",
+    "portrait_key": "park_elder",
+    "memory_type": "love",
+    "memory_color": [1.0, 0.4, 0.6, 1.0],
+    "summary": "치매 아내를 위해 첫사랑 기억을 이식하려는 노인",
+    "day": 1,
+    "trust_required": 0,
+    "puzzle_difficulty": 2
+  },
+  "dialogue": {
+    "intro": [
+      {"speaker": "박 노인", "text": "기억을... 이식할 수 있다고 들었소.", "emotion": "hopeful"},
+      {"speaker": "진우", "text": "네, 가능합니다. 누구에게 이식하시려고요?", "emotion": "neutral"},
+      {"speaker": "박 노인", "text": "내 아내... 50년을 함께한 사람이오.", "emotion": "sad"},
+      {"speaker": "박 노인", "text": "치매가 와서... 나를 못 알아보기 시작했어.", "emotion": "sad"},
+      {"speaker": "진우", "text": "그래서 당신의 기억을 아내분께 이식하시려는...", "emotion": "understanding"},
+      {"speaker": "박 노인", "text": "내 첫사랑 기억이오. 아내를 처음 만났던 그날.", "emotion": "nostalgic"},
+      {"speaker": "박 노인", "text": "이 기억만 있으면... 날 다시 알아볼 수 있을 거요.", "emotion": "hopeful"}
+    ],
+    "after_puzzle": [
+      {"speaker": "진우", "text": "1974년 봄... 대학교 도서관에서의 만남이군요.", "emotion": "thoughtful"},
+      {"speaker": "진우", "text": "창가에서 책을 읽던 그녀에게 말을 걸었던...", "emotion": "thoughtful"},
+      {"speaker": "박 노인", "text": "그렇소. 그날 이후로 50년을 함께했어.", "emotion": "nostalgic"},
+      {"speaker": "진우", "text": "하지만... 기억 이식에는 위험이 있습니다.", "emotion": "serious"},
+      {"speaker": "진우", "text": "본인 기억이 아닌 것을 받아들이면, 혼란이 생길 수 있어요.", "emotion": "warning"},
+      {"speaker": "박 노인", "text": "상관없소. 날 잊어버린 채로 사는 것보다는...", "emotion": "determined"}
+    ],
+    "choices": [
+      {"id": "accept", "text": "[매입 후 이식] 기억을 이식해 드린다", "result": "accept"},
+      {"id": "reject", "text": "[거절] 위험을 설명하고 거절한다", "result": "reject"},
+      {"id": "modify", "text": "[수정] 기억 대신 '감정의 흔적'만 이식한다", "result": "modify"}
+    ],
+    "endings": {
+      "accept": [
+        {"speaker": "진우", "text": "...알겠습니다. 이식을 진행하죠.", "emotion": "reluctant"},
+        {"speaker": "내레이션", "text": "기억 이식은 성공했다. 아내는 남편을 다시 알아봤다."},
+        {"speaker": "내레이션", "text": "하지만 3개월 후, 그녀는 자신의 기억과 남편의 기억 사이에서 혼란에 빠졌다."},
+        {"speaker": "내레이션", "text": "그녀는 '내가 누구인지 모르겠다'고 말하며 울었다."}
+      ],
+      "reject": [
+        {"speaker": "진우", "text": "죄송합니다. 이 이식은 해드릴 수 없습니다.", "emotion": "firm"},
+        {"speaker": "박 노인", "text": "왜... 왜 안 되는 거요?", "emotion": "desperate"},
+        {"speaker": "진우", "text": "아내분은 당신을 '기억'으로 사랑한 게 아닙니다.", "emotion": "caring"},
+        {"speaker": "진우", "text": "50년간의 '함께함'으로 사랑한 거예요. 그건 여전히 남아있습니다.", "emotion": "warm"},
+        {"speaker": "내레이션", "text": "박 노인은 한동안 침묵했다. 그리고 천천히 일어났다."},
+        {"speaker": "내레이션", "text": "\"옳은 말이오.\" 그는 아내에게 돌아갔다. 매일, 처음 만나는 것처럼 인사하며."}
+      ],
+      "modify": [
+        {"speaker": "진우", "text": "다른 방법이 있습니다. '감정의 흔적'이라는 기술이에요.", "emotion": "thoughtful"},
+        {"speaker": "진우", "text": "기억 자체가 아니라, 그 사람에 대한 '느낌'만 이식합니다.", "emotion": "explaining"},
+        {"speaker": "박 노인", "text": "느낌이라...", "emotion": "curious"},
+        {"speaker": "진우", "text": "아내분이 당신을 보면, '안심되는 사람'이라고 느끼게 됩니다.", "emotion": "gentle"},
+        {"speaker": "내레이션", "text": "이식 후, 아내는 남편을 알아보지 못했지만,"},
+        {"speaker": "내레이션", "text": "그가 곁에 있으면 이상하게 마음이 편해진다고 말했다."}
+      ]
+    }
+  },
+  "reputation_effects": {
+    "accept": {"mercy": 15, "justice": -5, "profit": 0},
+    "reject": {"mercy": -10, "justice": 10, "profit": 0},
+    "modify": {"mercy": 5, "justice": 10, "profit": 0}
+  },
+  "consequences": {
+    "accept": {
+      "news": "기억 이식 후 정체성 혼란 사례 증가... 전문가들 '신중해야'",
+      "followup_day": 5
+    },
+    "reject": {
+      "news": "치매 환자 가족 지원 모임, 전국적 확산",
+      "followup_day": null
+    },
+    "modify": {
+      "news": "'감정 흔적' 이식술, 치매 환자 가족들 사이 화제",
+      "followup_day": null
+    }
+  }
+}

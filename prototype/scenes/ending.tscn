@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://f6yk1v8k2q1y7"]
+[gd_scene load_steps=10 format=3 uid="uid://f6yk1v8k2q1y7"]
 
 [ext_resource type="Script" path="res://scripts/ending.gd" id="1_ending"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/bg_title.png" id="2_bg"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" path="res://assets/illustrations/ending_mercy.png" id="4_ending_mercy"]
 [ext_resource type="Texture2D" path="res://assets/illustrations/ending_justice.png" id="5_ending_justice"]
 [ext_resource type="Texture2D" path="res://assets/illustrations/ending_profit.png" id="6_ending_profit"]
+[ext_resource type="Texture2D" path="res://assets/ui/icon_mercy.png" id="7_icon_mercy"]
+[ext_resource type="Texture2D" path="res://assets/ui/icon_justice.png" id="8_icon_justice"]
+[ext_resource type="Texture2D" path="res://assets/ui/icon_profit.png" id="9_icon_profit"]
 
 [node name="Ending" type="Control"]
 layout_mode = 3
@@ -28,15 +31,6 @@ texture = ExtResource("2_bg")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Overlay" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.5)
-
 [node name="EndingIllustration" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -47,9 +41,54 @@ grow_vertical = 2
 texture = ExtResource("4_ending_mercy")
 expand_mode = 1
 stretch_mode = 6
-modulate = Color(1, 1, 1, 0.9)
+modulate = Color(1, 1, 1, 0)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="ContentContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopSection" type="Control" parent="ContentContainer"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+
+[node name="EndingTitle" type="Label" parent="ContentContainer/TopSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -60.0
+offset_right = 400.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.65, 0.55, 0.98, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.96, 0.83, 0.5)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 72
+text = "하루가 저물었습니다"
+horizontal_alignment = 1
+vertical_alignment = 1
+modulate = Color(1, 1, 1, 0)
+
+[node name="EndingSubtitle" type="Label" parent="ContentContainer/TopSection"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -57,139 +96,258 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -500.0
-offset_top = -300.0
+offset_top = 30.0
 offset_right = 500.0
-offset_bottom = 300.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 35
-
-[node name="EndingTitle" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.65, 0.55, 0.98, 1)
-theme_override_colors/font_shadow_color = Color(0, 0.96, 0.83, 0.4)
-theme_override_constants/shadow_offset_y = 3
-theme_override_font_sizes/font_size = 64
-text = "하루가 저물었습니다"
-horizontal_alignment = 1
-
-[node name="EndingSubtitle" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.96, 0.83, 0.8)
-theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(0, 0.96, 0.83, 0.9)
+theme_override_font_sizes/font_size = 28
 text = "당신의 선택이 세상을 바꿨습니다"
 horizontal_alignment = 1
+vertical_alignment = 1
+modulate = Color(1, 1, 1, 0)
 
-[node name="Spacer" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="MiddleSection" type="Control" parent="ContentContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="SummaryPanel" type="PanelContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(800, 220)
+[node name="SummaryPanel" type="PanelContainer" parent="ContentContainer/MiddleSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -100.0
+offset_right = 400.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+modulate = Color(1, 1, 1, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/MiddleSection/SummaryPanel"]
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 20
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SummaryPanel"]
+[node name="VBox" type="VBoxContainer" parent="ContentContainer/MiddleSection/SummaryPanel/MarginContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 25
+theme_override_constants/separation = 10
 
-[node name="VBox" type="VBoxContainer" parent="VBoxContainer/SummaryPanel/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="SummaryTitle" type="Label" parent="VBoxContainer/SummaryPanel/MarginContainer/VBox"]
+[node name="SummaryTitle" type="Label" parent="ContentContainer/MiddleSection/SummaryPanel/MarginContainer/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.65, 0.55, 0.98, 1)
-theme_override_font_sizes/font_size = 22
-text = "오늘의 기록"
+theme_override_font_sizes/font_size = 24
+text = "📋 오늘의 기록"
 horizontal_alignment = 1
 
-[node name="CustomerSummary" type="RichTextLabel" parent="VBoxContainer/SummaryPanel/MarginContainer/VBox"]
-custom_minimum_size = Vector2(0, 130)
+[node name="Divider" type="HSeparator" parent="ContentContainer/MiddleSection/SummaryPanel/MarginContainer/VBox"]
+layout_mode = 2
+theme_override_styles/separator = null
+
+[node name="CustomerSummary" type="RichTextLabel" parent="ContentContainer/MiddleSection/SummaryPanel/MarginContainer/VBox"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "손님 요약이 여기에 표시됩니다."
 
-[node name="ReputationSummary" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-alignment = 1
-theme_override_constants/separation = 80
+[node name="DescriptionPanel" type="PanelContainer" parent="ContentContainer/MiddleSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = 110.0
+offset_right = 450.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+modulate = Color(1, 1, 1, 0)
 
-[node name="MercyBox" type="VBoxContainer" parent="VBoxContainer/ReputationSummary"]
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/MiddleSection/DescriptionPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 15
+
+[node name="Description" type="RichTextLabel" parent="ContentContainer/MiddleSection/DescriptionPanel/MarginContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.95, 0.9)
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "엔딩 설명이 여기에 표시됩니다."
+
+[node name="BottomSection" type="Control" parent="ContentContainer"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+
+[node name="ReputationContainer" type="HBoxContainer" parent="ContentContainer/BottomSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -80.0
+offset_right = 350.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+theme_override_constants/separation = 100
+modulate = Color(1, 1, 1, 0)
+
+[node name="MercyBox" type="VBoxContainer" parent="ContentContainer/BottomSection/ReputationContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ReputationSummary/MercyBox"]
+[node name="IconContainer" type="HBoxContainer" parent="ContentContainer/BottomSection/ReputationContainer/MercyBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 0.8, 0.9, 1)
-theme_override_font_sizes/font_size = 18
-text = "자비"
-horizontal_alignment = 1
+alignment = 1
 
-[node name="Value" type="Label" parent="VBoxContainer/ReputationSummary/MercyBox"]
+[node name="Icon" type="TextureRect" parent="ContentContainer/BottomSection/ReputationContainer/MercyBox/IconContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("7_icon_mercy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ContentContainer/BottomSection/ReputationContainer/MercyBox/IconContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.96, 0.83, 1)
-theme_override_font_sizes/font_size = 40
-text = "50"
+theme_override_font_sizes/font_size = 20
+text = " 자비"
+
+[node name="Value" type="Label" parent="ContentContainer/BottomSection/ReputationContainer/MercyBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.96, 0.83, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.96, 0.83, 0.3)
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 48
+text = "0"
 horizontal_alignment = 1
 
-[node name="JusticeBox" type="VBoxContainer" parent="VBoxContainer/ReputationSummary"]
+[node name="JusticeBox" type="VBoxContainer" parent="ContentContainer/BottomSection/ReputationContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
+alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/ReputationSummary/JusticeBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.9, 0.7, 0.4, 1)
-theme_override_font_sizes/font_size = 18
-text = "정의"
-horizontal_alignment = 1
-
-[node name="Value" type="Label" parent="VBoxContainer/ReputationSummary/JusticeBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.96, 0.72, 0.35, 1)
-theme_override_font_sizes/font_size = 40
-text = "50"
-horizontal_alignment = 1
-
-[node name="ProfitBox" type="VBoxContainer" parent="VBoxContainer/ReputationSummary"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Label" type="Label" parent="VBoxContainer/ReputationSummary/ProfitBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.9, 0.5, 1)
-theme_override_font_sizes/font_size = 18
-text = "이익"
-horizontal_alignment = 1
-
-[node name="Value" type="Label" parent="VBoxContainer/ReputationSummary/ProfitBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 0.9, 0.4, 1)
-theme_override_font_sizes/font_size = 40
-text = "50"
-horizontal_alignment = 1
-
-[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="IconContainer" type="HBoxContainer" parent="ContentContainer/BottomSection/ReputationContainer/JusticeBox"]
 layout_mode = 2
 alignment = 1
-theme_override_constants/separation = 50
 
-[node name="RestartButton" type="Button" parent="VBoxContainer/ButtonContainer"]
-custom_minimum_size = Vector2(220, 55)
+[node name="Icon" type="TextureRect" parent="ContentContainer/BottomSection/ReputationContainer/JusticeBox/IconContainer"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "처음부터"
+texture = ExtResource("8_icon_justice")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="QuitButton" type="Button" parent="VBoxContainer/ButtonContainer"]
-custom_minimum_size = Vector2(220, 55)
+[node name="Label" type="Label" parent="ContentContainer/BottomSection/ReputationContainer/JusticeBox/IconContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
-text = "종료"
+theme_override_colors/font_color = Color(0.96, 0.72, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = " 정의"
+
+[node name="Value" type="Label" parent="ContentContainer/BottomSection/ReputationContainer/JusticeBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.72, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.96, 0.72, 0, 0.3)
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+
+[node name="ProfitBox" type="VBoxContainer" parent="ContentContainer/BottomSection/ReputationContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="IconContainer" type="HBoxContainer" parent="ContentContainer/BottomSection/ReputationContainer/ProfitBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="ContentContainer/BottomSection/ReputationContainer/ProfitBox/IconContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("9_icon_profit")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="ContentContainer/BottomSection/ReputationContainer/ProfitBox/IconContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 1, 0.4, 1)
+theme_override_font_sizes/font_size = 20
+text = " 이익"
+
+[node name="Value" type="Label" parent="ContentContainer/BottomSection/ReputationContainer/ProfitBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 1, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0.4, 1, 0.4, 0.3)
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="ContentContainer/BottomSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = 50.0
+offset_right = 260.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+theme_override_constants/separation = 60
+modulate = Color(1, 1, 1, 0)
+
+[node name="RestartButton" type="Button" parent="ContentContainer/BottomSection/ButtonContainer"]
+custom_minimum_size = Vector2(220, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "🔄 처음부터"
+
+[node name="QuitButton" type="Button" parent="ContentContainer/BottomSection/ButtonContainer"]
+custom_minimum_size = Vector2(220, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "🚪 종료"
+
+[node name="EpilogueLabel" type="RichTextLabel" parent="ContentContainer/BottomSection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = 115.0
+offset_right = 400.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.65, 0.55, 0.98, 0.8)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[i]에필로그가 여기에 표시됩니다.[/i]"
+fit_content = true
+modulate = Color(1, 1, 1, 0)
 
 [node name="PrototypeNote" type="Label" parent="."]
 layout_mode = 1
@@ -199,12 +357,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -300.0
-offset_top = -50.0
+offset_top = -40.0
 offset_right = 300.0
-offset_bottom = -20.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.4, 0.4, 0.5, 0.7)
+theme_override_colors/font_color = Color(0.5, 0.5, 0.6, 0.6)
 theme_override_font_sizes/font_size = 14
 text = "Prototype v0.1 - Creative Nexus | Neowiz Quest 2026"
 horizontal_alignment = 1

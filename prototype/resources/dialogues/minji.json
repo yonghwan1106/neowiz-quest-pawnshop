@@ -1,0 +1,85 @@
+{
+  "customer_id": "minji",
+  "name": "민지",
+  "metadata": {
+    "age": 17,
+    "portrait": "res://assets/portraits/portrait_minji.png",
+    "portrait_key": "minji",
+    "memory_type": "happiness",
+    "memory_color": [1.0, 0.85, 0.3, 1.0],
+    "summary": "사이버네틱 팔 수술비를 위해 할머니와의 추억을 팔러 온 소녀",
+    "day": 1,
+    "trust_required": 0,
+    "puzzle_difficulty": 1
+  },
+  "dialogue": {
+    "intro": [
+      {"speaker": "민지", "text": "저... 여기가 기억 전당포 맞죠?", "emotion": "nervous"},
+      {"speaker": "진우", "text": "그렇습니다. 무엇을 도와드릴까요?", "emotion": "neutral"},
+      {"speaker": "민지", "text": "저... 기억을 팔러 왔어요. 돈이 필요해서요.", "emotion": "sad"},
+      {"speaker": "진우", "text": "어떤 기억을 팔고 싶으신가요?", "emotion": "neutral"},
+      {"speaker": "민지", "text": "할머니랑... 어릴 때 같이 보낸 기억이요.", "emotion": "sad"},
+      {"speaker": "민지", "text": "사이버네틱 팔 수술비가 필요해요. 사고로 왼팔을 잃었거든요.", "emotion": "sad"},
+      {"speaker": "진우", "text": "(기억 구슬을 건네받으며) 감정을 해보겠습니다.", "emotion": "neutral"}
+    ],
+    "after_puzzle": [
+      {"speaker": "진우", "text": "이 기억은... 할머니와 함께한 여름날의 추억이군요.", "emotion": "thoughtful"},
+      {"speaker": "진우", "text": "바닷가에서 조개를 줍고, 할머니가 해주신 칼국수를 먹던...", "emotion": "thoughtful"},
+      {"speaker": "민지", "text": "네... 할머니는 3년 전에 돌아가셨어요.", "emotion": "sad"},
+      {"speaker": "민지", "text": "이 기억 말고는... 팔 수 있는 게 없어요.", "emotion": "desperate"},
+      {"speaker": "진우", "text": "이 기억을 팔면, 할머니와의 그 여름날을 영영 잊게 됩니다.", "emotion": "serious"},
+      {"speaker": "진우", "text": "그래도 괜찮으시겠습니까?", "emotion": "serious"},
+      {"speaker": "민지", "text": "...괜찮아요. 팔이 없으면 일도 못 하니까요.", "emotion": "determined"}
+    ],
+    "choices": [
+      {"id": "accept", "text": "[매입] 기억을 사들인다 (500만원)", "result": "accept"},
+      {"id": "reject", "text": "[거절] 이 기억은 팔지 마세요", "result": "reject"},
+      {"id": "modify", "text": "[수정] 일부만 추출하고 핵심은 남긴다", "result": "modify"}
+    ],
+    "endings": {
+      "accept": [
+        {"speaker": "진우", "text": "...알겠습니다. 500만원에 매입하겠습니다.", "emotion": "neutral"},
+        {"speaker": "민지", "text": "감사합니다... 정말 감사합니다!", "emotion": "relieved"},
+        {"speaker": "내레이션", "text": "민지는 수술비를 마련했지만, 할머니와의 그 여름날을 영영 잃었다."},
+        {"speaker": "내레이션", "text": "1년 후, 그녀는 왜 자신이 바다를 보면 눈물이 나는지 알 수 없었다."}
+      ],
+      "reject": [
+        {"speaker": "진우", "text": "...이 기억은 팔지 마세요.", "emotion": "caring"},
+        {"speaker": "민지", "text": "네? 하지만 저 정말 돈이...", "emotion": "confused"},
+        {"speaker": "진우", "text": "사이버네틱 팔 보조금 제도가 있습니다. 제가 신청서를 도와드리죠.", "emotion": "helpful"},
+        {"speaker": "민지", "text": "그런 게... 있었어요?", "emotion": "surprised"},
+        {"speaker": "내레이션", "text": "민지는 기억을 지켰고, 보조금으로 수술을 받았다."},
+        {"speaker": "내레이션", "text": "그녀는 지금도 할머니의 칼국수 레시피를 간직하고 있다."}
+      ],
+      "modify": [
+        {"speaker": "진우", "text": "다른 방법이 있습니다. 기억의 '감정'만 추출하는 거예요.", "emotion": "thoughtful"},
+        {"speaker": "민지", "text": "감정만요?", "emotion": "curious"},
+        {"speaker": "진우", "text": "할머니와의 추억은 남지만, 그때 느꼈던 '행복감'만 분리합니다.", "emotion": "explaining"},
+        {"speaker": "진우", "text": "200만원밖에 못 드리지만... 기억 자체는 지킬 수 있어요.", "emotion": "caring"},
+        {"speaker": "민지", "text": "...그렇게 해주세요.", "emotion": "hopeful"},
+        {"speaker": "내레이션", "text": "민지는 할머니와의 기억을 지켰지만, 그 기억을 떠올릴 때 더 이상 행복하지 않았다."},
+        {"speaker": "내레이션", "text": "하지만 그녀는 후회하지 않았다. 기억이라도 남았으니까."}
+      ]
+    }
+  },
+  "reputation_effects": {
+    "accept": {"mercy": 10, "justice": 0, "profit": 5},
+    "reject": {"mercy": -5, "justice": 5, "profit": 0},
+    "modify": {"mercy": 5, "justice": 5, "profit": 0}
+  },
+  "consequences": {
+    "accept": {
+      "news": "17세 소녀, 기억 매각으로 사이버네틱 수술 성공... '할머니가 누군지 모르겠다'",
+      "followup_day": 4,
+      "followup_customer": "minji_mother"
+    },
+    "reject": {
+      "news": "네오시티 사이버네틱 보조금 신청 급증",
+      "followup_day": null
+    },
+    "modify": {
+      "news": "기억 부분 추출 시술, 새로운 대안으로 주목",
+      "followup_day": null
+    }
+  }
+}
