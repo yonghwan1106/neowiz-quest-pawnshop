@@ -84,6 +84,19 @@ func _init_fragments() -> void:
 			# 색상 틴트 적용
 			fragment.modulate = fragment_colors[i]
 
+			# 파편 번호 레이블 추가
+			var label = Label.new()
+			label.text = str(i + 1)
+			label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+			label.set_anchors_preset(Control.PRESET_FULL_RECT)
+			label.add_theme_font_size_override("font_size", 28)
+			label.add_theme_color_override("font_color", Color(1, 1, 1, 1))
+			label.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.8))
+			label.add_theme_constant_override("shadow_offset_x", 2)
+			label.add_theme_constant_override("shadow_offset_y", 2)
+			fragment.add_child(label)
+
 			fragments.append(fragment)
 
 func _animate_orb() -> void:
